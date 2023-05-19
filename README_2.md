@@ -1,0 +1,1 @@
+//Este bot está pensado para funcionar como una API para uso privado//
