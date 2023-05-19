@@ -5,8 +5,11 @@ import playsound
 app = Flask(__name__)
 
 def convertir_texto_a_voz(texto, archivo_audio):
+    carpeta_audio = 'audios'
+    ruta_archivo = carpeta_audio + '/' + archivo_audio
+
     tts = gTTS(text=texto, lang='es')
-    tts.save(archivo_audio)
+    tts.save(ruta_archivo)
 
 def reproducir_audio(archivo_audio):
     playsound.playsound(archivo_audio)
@@ -26,7 +29,8 @@ def api_reproducir_audio():
     data = request.get_json()
     archivo_audio = data['archivo_audio']
 
-    reproducir_audio(archivo_audio)
+    ruta_archivo = 'audios/' + archivo_audio
+    reproducir_audio(ruta_archivo)
 
     return jsonify({'status': 'success', 'mensaje': 'Audio reproducido correctamente.'})
 
